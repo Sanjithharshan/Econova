@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint Calculator - EcoNova Solutions</title>
+    <link rel="stylesheet" href="../assets/css/carbon.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="carbon-page">
+        <!-- Header -->
+        <header class="carbon-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <a href="dashboard.html" class="back-btn">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </a>
+                    <h1>
+                        <i class="fas fa-leaf"></i>
+                        Carbon Footprint Calculator
+                    </h1>
+                    <p>Measure and reduce your environmental impact</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="carbon-container">
+            <!-- Calculator Section -->
+            <div class="calculator-section">
+                <div class="calculator-card">
+                    <h2>Calculate Your Impact</h2>
+                    <p class="subtitle">Enter your waste details to calculate CO₂ emissions</p>
+                    
+                    <form id="carbonForm" class="carbon-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>
+                                    <i class="fas fa-tag"></i> Waste Type
+                                </label>
+                                <select id="wasteType" required>
+                                    <option value="">Select waste type</option>
+                                    <option value="organic">Organic Waste</option>
+                                    <option value="plastic">Plastic</option>
+                                    <option value="glass">Glass</option>
+                                    <option value="metal">Metal</option>
+                                    <option value="paper">Paper & Cardboard</option>
+                                    <option value="hazardous">Hazardous</option>
+                                    <option value="ewaste">E-Waste</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>
+                                    <i class="fas fa-weight"></i> Quantity
+                                </label>
+                                <input type="number" id="quantity" placeholder="Enter weight in kg" min="0" step="0.1" required>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-calculator"></i> Calculate Impact
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Result Card -->
+                <div class="result-card" id="resultCard" style="display: none;">
+                    <h3>Your Carbon Impact</h3>
+                    <div class="co2-display">
+                        <div class="co2-value">
+                            <span id="co2Value">0</span>
+                            <span class="co2-unit">kg CO₂</span>
+                        </div>
+                        <p class="co2-equivalent" id="co2Equivalent"></p>
+                    </div>
+                    
+                    <div class="comparison-chart" id="comparisonChart">
+                        <!-- Chart will be generated here -->
+                    </div>
+                    
+                    <div class="recommendations" id="recommendations">
+                        <!-- Recommendations will be shown here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats & History -->
+            <div class="stats-section">
+                <div class="stats-card">
+                    <h3>Your Progress</h3>
+                    <div class="stat-items">
+                        <div class="stat-item">
+                            <i class="fas fa-trophy" style="color: #f59e0b;"></i>
+                            <div>
+                                <span class="stat-value">127</span>
+                                <span class="stat-label">Total Calculations</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-leaf" style="color: #10b981;"></i>
+                            <div>
+                                <span class="stat-value">342</span>
+                                <span class="stat-label">CO₂ Saved (kg)</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-fire" style="color: #ef4444;"></i>
+                            <div>
+                                <span class="stat-value">892</span>
+                                <span class="stat-label">Total CO₂ Emitted</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="history-card">
+                    <div class="card-header">
+                        <h3>Recent Calculations</h3>
+                    </div>
+                    <div class="history-list" id="historyList">
+                        <!-- History items will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/carbon.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,30 @@
+/* Map Module Styles */
+:root{--primary:#10b981;--muted:#6b7280;--text:#1f2937;--bg:#f3f4f6;--white:#fff;--border:#e5e7eb;--radius:12px;--shadow:0 8px 20px rgba(0,0,0,.08)}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text)}
+.map-page{padding:20px}
+.map-header{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;margin-bottom:16px}
+.map-header h1{display:flex;align-items:center;gap:.6rem;color:var(--primary);margin:.4rem 0 0}
+.back-btn{color:var(--muted);text-decoration:none;font-size:.9rem}
+.back-btn:hover{color:var(--primary)}
+
+.map-container{display:grid;grid-template-columns:1fr 360px;gap:16px}
+#map{height:72vh;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.map-sidebar{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px;display:flex;flex-direction:column;gap:14px;max-height:72vh;overflow:auto}
+
+.user-card,.tools,.bins-list{border:1px solid var(--border);border-radius:10px;padding:12px}
+.user-card h3,.bins-list h3{font-size:1.05rem;margin-bottom:.4rem}
+#userAddress{color:var(--muted);margin-bottom:.4rem}
+
+.btn{border:none;border-radius:8px;background:#eef2f7;color:#0f172a;padding:.6rem .8rem;cursor:pointer;font-weight:600;display:inline-flex;align-items:center;gap:.5rem}
+.btn.primary{background:linear-gradient(135deg,#10b981,#34d399);color:#fff}
+.btn:hover{filter:brightness(1.05)}
+
+.bin-item{display:grid;grid-template-columns:1fr auto;gap:.4rem;padding:.6rem;border-radius:8px;background:#f8fafc;border:1px solid var(--border);margin-bottom:.5rem}
+.bin-meta{font-size:.85rem;color:var(--muted)}
+.action-row{display:flex;gap:.4rem}
+.icon-btn{border:1px solid var(--border);background:#fff;border-radius:8px;padding:.35rem .55rem;cursor:pointer;color:var(--muted)}
+.icon-btn:hover{color:var(--primary);border-color:var(--primary)}
+
+.leaflet-container a{color:#0ea5e9}
+
+@media(max-width:1024px){.map-container{grid-template-columns:1fr}#map{height:65vh}}

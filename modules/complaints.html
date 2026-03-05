@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaints - EcoNova Solutions</title>
+    <link rel="stylesheet" href="../assets/css/complaints.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="complaints-page">
+        <header class="complaints-header">
+            <div class="header-content">
+                <a href="dashboard.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+                <h1><i class="fas fa-comment-dots"></i> Complaints & Queries</h1>
+                <p>Citizens can raise complaints to a specific recipient. Municipal authority can view all.</p>
+            </div>
+        </header>
+
+        <div class="complaints-container">
+            <section class="submit-section citizen-only" id="submitSection">
+                <div class="card">
+                    <h2>Raise a Complaint</h2>
+                    <form id="complaintForm" class="complaint-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><i class="fas fa-heading"></i> Title</label>
+                                <input id="cmpTitle" type="text" placeholder="Short title" required>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-user-shield"></i> Send To</label>
+                                <select id="cmpTarget" required>
+                                    <option value="">Choose recipient</option>
+                                    <option value="municipal">Municipal Authority</option>
+                                    <option value="admin">Administrator</option>
+                                    <option value="recycler">Recycler</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><i class="fas fa-tags"></i> Category</label>
+                                <select id="cmpCategory" required>
+                                    <option value="overflow">Overflowing Bin</option>
+                                    <option value="missed-pickup">Missed Pickup</option>
+                                    <option value="damage">Damaged Bin</option>
+                                    <option value="hygiene">Unhygienic Area</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-map-marker-alt"></i> Location (optional)</label>
+                                <input id="cmpLocation" type="text" placeholder="Area / Street / Landmark">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-align-left"></i> Description</label>
+                            <textarea id="cmpDescription" rows="5" placeholder="Describe your complaint or question" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit</button>
+                    </form>
+                </div>
+            </section>
+
+            <section class="list-section">
+                <div class="card">
+                    <div class="list-header">
+                        <h2 id="listTitle"><i class="fas fa-inbox"></i> My Complaints</h2>
+                        <div class="filters">
+                            <select id="statusFilter">
+                                <option value="all">All</option>
+                                <option value="open">Open</option>
+                                <option value="in-progress">In Progress</option>
+                                <option value="resolved">Resolved</option>
+                            </select>
+                            <select id="recipientFilter">
+                                <option value="all">All Recipients</option>
+                                <option value="municipal">Municipal</option>
+                                <option value="admin">Admin</option>
+                                <option value="recycler">Recycler</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="complaintsList" class="complaints-list">
+                        <!-- Items populated by JS -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="modal" id="viewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Complaint</h3>
+                <button class="close-btn" onclick="closeViewModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="../assets/js/complaints.js"></script>
+</body>
+</html>

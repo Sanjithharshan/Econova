@@ -1,0 +1,27 @@
+/* EcoNova Chatbot Widget */
+:root{
+	--cb-primary:#10b981;--cb-dark:#065f46;--cb-bg:#ffffff;--cb-shadow:0 12px 24px rgba(0,0,0,.15);--cb-muted:#6b7280;--cb-user:#06b6d4;--cb-bot:#10b981
+}
+.econova-chatbot{position:fixed;right:20px;bottom:20px;z-index:3000;font-family:'Poppins',sans-serif}
+.cb-fab{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#10b981,#34d399);color:#fff;border:none;box-shadow:var(--cb-shadow);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.cb-fab i{font-size:20px}
+.cb-panel{position:absolute;right:0;bottom:70px;width:340px;max-height:520px;background:var(--cb-bg);border-radius:16px;box-shadow:var(--cb-shadow);display:none;flex-direction:column;overflow:hidden}
+.cb-panel.active{display:flex}
+.cb-header{display:flex;align-items:center;gap:.6rem;padding:12px 14px;background:linear-gradient(135deg,#10b981,#06b6d4);color:#fff}
+.cb-header .cb-title{font-weight:700}
+.cb-header .cb-sub{font-size:.75rem;opacity:.9}
+.cb-body{padding:12px;height:360px;overflow:auto;background:#f8fafc}
+.cb-msg{display:flex;margin-bottom:10px}
+.cb-msg .bubble{padding:10px 12px;border-radius:14px;max-width:80%;font-size:.9rem;line-height:1.4;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.cb-msg.bot{justify-content:flex-start}
+.cb-msg.bot .bubble{background:#ecfdf5;color:#064e3b;border:1px solid #d1fae5}
+.cb-msg.user{justify-content:flex-end}
+.cb-msg.user .bubble{background:#e0f2fe;color:#0c4a6e;border:1px solid #bae6fd}
+.cb-quick{display:flex;flex-wrap:wrap;gap:6px;padding:8px 12px;border-top:1px solid #eef2f7}
+.cb-quick button{border:none;background:#f1f5f9;color:#0f172a;border-radius:999px;padding:6px 10px;font-size:.8rem;cursor:pointer}
+.cb-quick button:hover{background:#e2e8f0}
+.cb-input{display:flex;gap:6px;padding:10px;border-top:1px solid #eef2f7;background:#fff}
+.cb-input input{flex:1;border:2px solid #e5e7eb;border-radius:999px;padding:9px 12px;font-size:.9rem}
+.cb-input input:focus{outline:none;border-color:var(--cb-primary)}
+.cb-input button{border:none;background:var(--cb-primary);color:#fff;border-radius:999px;padding:0 14px;font-weight:600;cursor:pointer}
+.cb-hint{padding:10px;color:var(--cb-muted);font-size:.78rem}

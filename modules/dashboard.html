@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - EcoNova Solutions</title>
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <i class="fas fa-leaf"></i>
+                <span>EcoNova</span>
+            </div>
+            <button class="sidebar-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="#overview" class="nav-item active" onclick="showSection('overview')">
+                <i class="fas fa-home"></i>
+                <span>Overview</span>
+            </a>
+            
+            <!-- Citizen Navigation -->
+            <div class="nav-group citizen-only" style="display: none;">
+                <a href="#waste-tracking" class="nav-item" onclick="showSection('waste-tracking')">
+                    <i class="fas fa-bin"></i>
+                    <span>My Waste</span>
+                </a>
+                <a href="map.html" class="nav-item">
+                    <i class="fas fa-map"></i>
+                    <span>City Map</span>
+                </a>
+                <a href="complaints.html" class="nav-item">
+                    <i class="fas fa-comment-dots"></i>
+                    <span>Complaints</span>
+                </a>
+                <a href="#rewards" class="nav-item" onclick="showSection('rewards')">
+                    <i class="fas fa-trophy"></i>
+                    <span>Rewards</span>
+                </a>
+                <a href="carbon-calculator.html" class="nav-item">
+                    <i class="fas fa-calculator"></i>
+                    <span>Carbon Footprint</span>
+                </a>
+                <a href="classification.html" class="nav-item">
+                    <i class="fas fa-brain"></i>
+                    <span>AI Classification</span>
+                </a>
+            </div>
+            
+            <!-- Municipal Navigation -->
+            <div class="nav-group municipal-only" style="display: none;">
+                <a href="map.html" class="nav-item">
+                    <i class="fas fa-map"></i>
+                    <span>City Map</span>
+                </a>
+                <a href="sensors.html" class="nav-item">
+                    <i class="fas fa-microchip"></i>
+                    <span>Smart Bin Sensors</span>
+                </a>
+                <a href="classification.html" class="nav-item">
+                    <i class="fas fa-brain"></i>
+                    <span>AI Classification</span>
+                </a>
+                <a href="#bin-monitoring" class="nav-item" onclick="showSection('bin-monitoring')">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span>Bin Monitoring</span>
+                </a>
+                <a href="#pickup-management" class="nav-item" onclick="showSection('pickup-management')">
+                    <i class="fas fa-truck"></i>
+                    <span>Pickup Management</span>
+                </a>
+                <a href="complaints.html" class="nav-item">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Complaint Management</span>
+                </a>
+                <a href="#reports" class="nav-item" onclick="showSection('reports')">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Reports</span>
+                </a>
+            </div>
+            
+            <!-- Recycler Navigation -->
+            <div class="nav-group recycler-only" style="display: none;">
+                <a href="#waste-data" class="nav-item" onclick="showSection('waste-data')">
+                    <i class="fas fa-database"></i>
+                    <span>Waste Data</span>
+                </a>
+                <a href="#routes" class="nav-item" onclick="showSection('routes')">
+                    <i class="fas fa-route"></i>
+                    <span>Optimized Routes</span>
+                </a>
+                <a href="#materials" class="nav-item" onclick="showSection('materials')">
+                    <i class="fas fa-recycle"></i>
+                    <span>Materials</span>
+                </a>
+            </div>
+            
+            <!-- Admin Navigation -->
+            <div class="nav-group admin-only" style="display: none;">
+                <a href="#system-analytics" class="nav-item" onclick="showSection('system-analytics')">
+                    <i class="fas fa-chart-line"></i>
+                    <span>System Analytics</span>
+                </a>
+                <a href="#user-management" class="nav-item" onclick="showSection('user-management')">
+                    <i class="fas fa-users-cog"></i>
+                    <span>User Management</span>
+                </a>
+                <a href="#settings" class="nav-item" onclick="showSection('settings')">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </div>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <a href="../index.html" class="logout-btn" onclick="handleLogout()">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Top Bar -->
+        <div class="topbar">
+            <div class="topbar-left">
+                <h1 id="dashboardTitle">Welcome to EcoNova Dashboard</h1>
+                <p id="dashboardSubtitle">Smart waste management platform</p>
+            </div>
+            <div class="topbar-right">
+                <div class="notifications">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </button>
+                </div>
+                <div class="user-profile">
+                    <div class="profile-info">
+                        <span class="profile-name" id="profileName">User</span>
+                        <span class="profile-role" id="profileRole">Citizen</span>
+                    </div>
+                    <div class="profile-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Overview Section -->
+            <div class="dashboard-section active" id="overview">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-green">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="stat1Value">0</h3>
+                            <p id="stat1Label">kg Waste Recycled</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon bg-blue">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="stat2Value">0</h3>
+                            <p id="stat2Label">Tonnes CO₂ Saved</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon bg-orange">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="stat3Value">0</h3>
+                            <p id="stat3Label">Reward Points</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon bg-purple">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="stat4Value">0</h3>
+                            <p id="stat4Label">Eco Score</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="widget-grid">
+                    <div class="widget">
+                        <h3>Quick Actions</h3>
+                        <div class="quick-actions">
+                            <button class="action-btn" onclick="showSection('waste-tracking')">
+                                <i class="fas fa-bin"></i>
+                                <span>Report Waste</span>
+                            </button>
+                            <button class="action-btn" onclick="showSection('complaints')">
+                                <i class="fas fa-comment"></i>
+                                <span>Lodge Complaint</span>
+                            </button>
+                            <button class="action-btn" onclick="showSection('carbon-calculator')">
+                                <i class="fas fa-calculator"></i>
+                                <span>Calculate Carbon</span>
+                            </button>
+                            <button class="action-btn" onclick="showSection('rewards')">
+                                <i class="fas fa-gift"></i>
+                                <span>Check Rewards</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="widget">
+                        <h3>Recent Activity</h3>
+                        <div class="activity-list" id="activityList">
+                            <!-- Activity items will be added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other sections will be added as separate modules -->
+            <div class="dashboard-section" id="other-sections">
+                <h2>Feature Coming Soon</h2>
+                <p>This module is currently under development.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/dashboard.js"></script>
+    <link rel="stylesheet" href="../assets/css/chatbot.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="../assets/js/chatbot.js"></script>
+</body>
+</html>
+
